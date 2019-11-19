@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "667953783728",
+    "firebase_url": "https://almoxarifado-9b569.firebaseio.com",
+    "project_id": "almoxarifado-9b569",
+    "storage_bucket": "almoxarifado-9b569.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667953783728:android:e992fcea47ab3c7f6a2c75",
+        "android_client_info": {
+          "package_name": "com.inatel.almoxarifad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667953783728-qoa0s3330obkkb00ient244rm4flitah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANU_Tdq2GdK9BSQBWdnCuG9nTjHZmmnS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667953783728-qoa0s3330obkkb00ient244rm4flitah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
