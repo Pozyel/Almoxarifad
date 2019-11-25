@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Retirar extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
@@ -44,51 +45,28 @@ public class Retirar extends AppCompatActivity {
                 String nome = entradaNome.getText().toString();
                 String serie = entradaSerie.getText().toString();
                 String data = entradaData.getText().toString();
+                Ferramenta fu = new Ferramenta();
+                fu.setIdFerramenta(UUID.randomUUID().toString());
+                fu.setNome(serie);
+                fu.setNomefuncionario(nome);
+                fu.setData_retirado(data);
+                fu.setData_enviado("pendente");
+                databaseReference.child("Historico_Ferramenta").child(fu.getIdFerramenta()).setValue(fu);
+                Funcionario fun = new Funcionario();
+                fun.setIdFuncionario(UUID.randomUUID().toString());
+                fun.setNome(serie);
+                fun.setNomeferramenta(nome);
+                fu.setData_retirado(data);
+                fu.setData_enviado("pendente");
+                databaseReference.child("Historico_Funcionario").child(fu.getIdFerramenta()).setValue(fu);
+                limparCampos();
 
-                int idFer = 0;
-                int qtd = 0;
-                int cont = 0;
+            }
 
-                String nomeFerramenta = null;
-
-                ArrayList<Ferramenta> ferramenta = null;  //Pegar Array do BD
-                for (Ferramenta us : ferramenta) {
-                    if (serie.equals(us.getNumero_serie())) {
-                        cont++;
-                        idFer = us.getIdFerramenta();
-                        qtd = us.getQuantidade();
-                        nomeFerramenta = us.getNome();
-                    }
-                }
-                ArrayList<Funcionario> funcionario = null;  //Pegar Array do BD
-                for (Funcionario user : funcionario) {
-
-                    if ((nome).equals(user.getNome())) {
-                        cont++;
-                    }
-
-                }
-
-                if (cont == 2) {
-
-                    if (qtd > 0) {
-                        qtd = qtd - 1;
-                        fer2.setIdFerramenta(idFer);
-                        fer2.setQuantidade(qtd);
-                        // Ferramenta
-                        fer2.setNome(nomeFerramenta); // Nome ferramenta
-                        fer2.setNomefuncionario(nome);
-                        fer2.setData_retirado(data);
-                        fer2.setNumero_serie(serie);
-                        // Funcionario
-                        fun2.setNome(nome);
-                        fun2.setNomeferramenta(nomeFerramenta); // Nome ferramenta
-                        fun2.setData_retirado(data);
-                        // ->FALTA Adicionar a informação no BD
-
-                    }
-
-                }
+            private void limparCampos() {
+                entradaNome.setText("");
+                entradaData.setText("");
+                entradaSerie.setText("");
             }
         });
     }
@@ -103,7 +81,7 @@ public class Retirar extends AppCompatActivity {
         entradaNome = findViewById(R.id.edtRegistro);
         entradaSerie = findViewById(R.id.edtNumero);
         entradaData = findViewById(R.id.edtDataRetirado);
-        botaoEntrar = findViewById(R.id.bottom);
+        botaoEntrar = findViewById(R.id.button);
     }
 
     private void alerta(String s){
@@ -113,3 +91,5 @@ public class Retirar extends AppCompatActivity {
     }
 
 }
+
+// Vai dar tudo certo, acredite

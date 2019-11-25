@@ -14,8 +14,9 @@ private Button botaoReceber,botaoRetirar,botaoHisFer,botaoHisFun;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        botaoRetirar = findViewById(R.id.btRetirar2);
+
         inicializarComponentes();
+
         botaoRetirar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,9 +52,12 @@ private Button botaoReceber,botaoRetirar,botaoHisFer,botaoHisFun;
 
     private void inicializarComponentes() {
 
+        botaoRetirar = findViewById(R.id.btRetirar2);
         botaoReceber = findViewById(R.id.btReceber2);
         botaoHisFun = findViewById(R.id.btHisFun2);
         botaoHisFer = findViewById(R.id.btHisFer2);
     }
 
 }
+
+// Testando

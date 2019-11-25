@@ -8,8 +8,8 @@
 
     <ListView
         android:id="@+id/lvHistorico1"
-        android:layout_width="438dp"
-        android:layout_height="513dp"
+        android:layout_width="385dp"
+        android:layout_height="323dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Numero de Serie"
+        android:hint="Nome da ferramenta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"

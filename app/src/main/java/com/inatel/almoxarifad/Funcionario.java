@@ -18,7 +18,7 @@ public class Funcionario {
     private String senha;
     private String data_retirado;
     private String data_enviado;
-    private int IdFuncionario;
+    private String IdFuncionario;
 
     public String getData_retirado() {
         return data_retirado;
@@ -44,11 +44,11 @@ public class Funcionario {
         this.data_enviado = data_enviado;
     }
 
-    public int getIdFuncionario() {
+    public String getIdFuncionario() {
         return IdFuncionario;
     }
 
-    public void setIdFuncionario(int IdFuncionario) {
+    public void setIdFuncionario(String IdFuncionario) {
         this.IdFuncionario = IdFuncionario;
     }
 
@@ -84,7 +84,14 @@ public class Funcionario {
         return senha;
     }
 
-    Object getData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public String toString() {
+        return
+                " nome= '" + nome + '\'' +
+                        ", nomeferramenta =' " + nomeferramenta + '\'' +
+                        ", data_retirado=' " + data_retirado + '\'' +
+                        ", data_enviado=' " + data_enviado + '\'';
     }
 }
+
+// Não vai mais dar erro

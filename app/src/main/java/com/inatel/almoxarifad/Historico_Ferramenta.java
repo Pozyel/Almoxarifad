@@ -9,17 +9,23 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Historico_Ferramenta extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    private List<Ferramenta> listFerramenta = new ArrayList<Ferramenta>();
+    private ArrayAdapter<Ferramenta> arrayAdapterFerramenta;
 
     EditText nome;
     Button procurar;
@@ -30,6 +36,7 @@ public class Historico_Ferramenta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historico__ferramenta);
         setContentView(R.layout.activity_historico__ferramenta);
+
         inicializarFirebase();
         inicializar();
 
@@ -37,19 +44,33 @@ public class Historico_Ferramenta extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String nome2 = nome.getText().toString();
+                final String nome1 = nome.getText().toString();
+                databaseReference.child("Historico_Ferramenta").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        listFerramenta.clear();
+                        String nomeAux;
+                        for(DataSnapshot objSnapshot:dataSnapshot.getChildren()){
+                            Ferramenta f = objSnapshot.getValue(Ferramenta.class);
 
-                ArrayList<Ferramenta> ferramenta = null;  //Pegar Array do BD
+                            nomeAux = f.getNome();
+                            if(nome1.equals(nomeAux)){
+                                listFerramenta.add(f);
+                            }
+                        }
+                        arrayAdapterFerramenta = new ArrayAdapter<Ferramenta>(Historico_Ferramenta.this,
+                                android.R.layout.simple_list_item_1,listFerramenta);
+                        lista.setAdapter(arrayAdapterFerramenta);
 
-                List<Ferramenta> lista2= new ArrayList<Ferramenta>();
-
-                for(Ferramenta us: ferramenta){
-                    if (nome2.equals(us.getNome())){
-                        lista2.add(us);
-                        ArrayAdapter<Ferramenta> adapter = new ArrayAdapter<Ferramenta>(Historico_Ferramenta.this, android.R.layout.simple_list_item_2, lista2);
-                        lista.setAdapter(adapter);
                     }
-                }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
 
             }
         });
@@ -59,13 +80,14 @@ public class Historico_Ferramenta extends AppCompatActivity {
     private void inicializarFirebase() {
         FirebaseApp.initializeApp(Historico_Ferramenta.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getReference();
     }
 
     private void inicializar(){
-        nome = findViewById(R.id.editText2);
-        procurar = findViewById(R.id.procurar2);
-        lista = findViewById(R.id.lvHistorico2);
+        nome = findViewById(R.id.editText);
+        procurar = findViewById(R.id.procurar);
+        lista = findViewById(R.id.lvHistorico1);
     }
 
     private void alerta(String s){
@@ -74,3 +96,5 @@ public class Historico_Ferramenta extends AppCompatActivity {
 
     }
 }
+
+// Ele vai funcionar

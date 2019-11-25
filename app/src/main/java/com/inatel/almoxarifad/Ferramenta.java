@@ -5,10 +5,7 @@
  */
 package com.inatel.almoxarifad;
 
-/**
- *
- * @author antun
- */
+
 public class Ferramenta {
 
     private String nome;
@@ -17,13 +14,13 @@ public class Ferramenta {
     private String data_enviado;
     private int quantidade;
     private String data_retirado;
-    private int IdFerramenta;
+    private String IdFerramenta;
 
-    public int getIdFerramenta() {
+    public String getIdFerramenta() {
         return IdFerramenta;
     }
 
-    public void setIdFerramenta(int IdFerramenta) {
+    public void setIdFerramenta(String IdFerramenta) {
         this.IdFerramenta = IdFerramenta;
     }
 
@@ -76,7 +73,16 @@ public class Ferramenta {
     public void setData_retirado(String data_retirado) {
         this.data_retirado = data_retirado;
     }
-    
- 
 
+    @Override
+    public String toString() {
+        return
+                "nome='" + nome + '\'' +
+                ", nomefuncionario='" + nomefuncionario + '\'' +
+                ", data_enviado='" + data_enviado + '\'' +
+                ", data_retirado='" + data_retirado + '\''
+                ;
+    }
 }
+
+// Apenas warning

@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Almoxarifad</string>
+    <string name="app_name">Almoxarifado 2019 v.52</string>
+    <string name="registro_do_funcion_rio">Registro do Funcionário</string>
+    <string name="numero_de_s_rie_da_ferramenta">Numero de Série da Ferramenta</string>
+    <string name="data_de_retirada">Data de Retirada</string>
+    <string name="retirar">Retirar</string>
+    <string name="data_de_devolu_o">Data de Devolução</string>
+    <string name="devolver">Devolver</string>
+    <string name="numero_de_serie_da_ferramenta">Numero de Série da Ferramenta</string>
+    <string name="registro_da_funcion_rio">Registro do Funcionário</string>
 </resources>
